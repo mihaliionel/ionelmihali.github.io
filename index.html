@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ionel - Network Engineer | CCNA Certified | ISP & Enterprise Solutions | Freelance Network Consultant">
+    <meta name="keywords" content="network engineer, CCNA, CCNP, ISP, BGP, OSPF, fiber optic, network automation, freelance">
+    <meta name="author" content="Ionel">
     <title>Ionel - Network Engineer | CCNA | ISP & Enterprise Solutions</title>
     <style>
         * {
@@ -68,6 +71,21 @@
 
         nav a:hover {
             color: var(--secondary);
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
         }
 
         /* Hero Section */
@@ -451,31 +469,6 @@
             }
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero .subtitle {
-                font-size: 1.1rem;
-            }
-
-            nav ul {
-                gap: 1rem;
-                font-size: 0.9rem;
-            }
-
-            section h2 {
-                font-size: 2rem;
-            }
-
-            .project-grid,
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
         /* Stats Section */
         .stats {
             background: var(--primary);
@@ -501,6 +494,45 @@
         .stat-item p {
             font-size: 1.1rem;
         }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background: var(--dark);
+                padding: 1rem;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+
+            .project-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -508,7 +540,12 @@
     <nav>
         <div class="container">
             <div class="logo">Ionel.NET</div>
-            <ul>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul id="navMenu">
                 <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#skills">Skills</a></li>
@@ -616,17 +653,7 @@
                     <li>Network troubleshooting</li>
                 </ul>
             </div>
-            <div class="service-card">
-                <h3>🤖 Network Automation</h3>
-                <p>Streamline operations with modern automation tools</p>
-                <ul>
-                    <li>Python network scripts</li>
-                    <li>Ansible playbooks</li>
-                    <li>Configuration management</li>
-                    <li>Automated provisioning</li>
-                    <li>Workflow optimization</li>
-                </ul>
-            </div>
+
             <div class="service-card">
                 <h3>🔒 Network Security</h3>
                 <p>Secure your infrastructure against threats</p>
@@ -722,17 +749,7 @@
                     <li>Broadband Technologies</li>
                 </ul>
             </div>
-            <div class="skill-category">
-                <h3>Automation & Scripting</h3>
-                <ul>
-                    <li>Python (Netmiko, Paramiko)</li>
-                    <li>Ansible Playbooks</li>
-                    <li>Bash Scripting</li>
-                    <li>Git Version Control</li>
-                    <li>Infrastructure as Code</li>
-                    <li>REST APIs</li>
-                </ul>
-            </div>
+
             <div class="skill-category">
                 <h3>Monitoring & Tools</h3>
                 <ul>
@@ -796,51 +813,9 @@
                     </ul>
                 </div>
             </div>
-            <div class="project-card">
-                <div class="project-header">
-                    <h3>CCNP Study Quiz Application</h3>
-                </div>
-                <div class="project-body">
-                    <p>Educational platform for CCNP preparation:</p>
-                    <ul>
-                        <li>500+ technical questions</li>
-                        <li>ENCOR & ENARSI coverage</li>
-                        <li>Progress tracking</li>
-                        <li>Detailed explanations</li>
-                        <li>Performance analytics</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="project-card">
-                <div class="project-header">
-                    <h3>Network Pricing Calculator</h3>
-                </div>
-                <div class="project-body">
-                    <p>Professional tool for network project estimation:</p>
-                    <ul>
-                        <li>Equipment cost calculation</li>
-                        <li>Labor hour estimation</li>
-                        <li>Service tier pricing</li>
-                        <li>Proposal generation</li>
-                        <li>ROI analysis</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="project-card">
-                <div class="project-header">
-                    <h3>Telecom Automation Suite</h3>
-                </div>
-                <div class="project-body">
-                    <p>Python-based automation for fixed networks:</p>
-                    <ul>
-                        <li>DSLAM port provisioning</li>
-                        <li>VLAN management scripts</li>
-                        <li>Configuration backups</li>
-                        <li>Incident response workflows</li>
-                        <li>Batch operations support</li>
-                    </ul>
-                </div>
-            </div>
+
+
+
         </div>
     </section>
 
@@ -853,15 +828,15 @@
                 BGP configuration, automation solutions, or ongoing network support, I'm here to help.
             </p>
             <div class="contact-methods">
-                <a href="https://www.upwork.com/freelancers/~0195de2a44548f0d49" class="contact-method" target="_blank">
+                <a href="https://www.upwork.com" class="contact-method" target="_blank">
                     <span style="font-size: 1.5rem;">💼</span>
                     <span>Upwork Profile</span>
                 </a>
-                <a href="mailto:m.ionel91@gmail.com" class="contact-method">
+                <a href="mailto:your.email@example.com" class="contact-method">
                     <span style="font-size: 1.5rem;">✉️</span>
                     <span>Email Me</span>
                 </a>
-                <a href="https://www.linkedin.com/in/ionel-mihali-132a7562" class="contact-method" target="_blank">
+                <a href="https://linkedin.com" class="contact-method" target="_blank">
                     <span style="font-size: 1.5rem;">🔗</span>
                     <span>LinkedIn</span>
                 </a>
@@ -885,6 +860,12 @@
     </footer>
 
     <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.toggle('active');
+        }
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -895,6 +876,9 @@
                         behavior: 'smooth',
                         block: 'start'
                     });
+                    // Close mobile menu after click
+                    const menu = document.getElementById('navMenu');
+                    menu.classList.remove('active');
                 }
             });
         });
@@ -918,6 +902,4 @@
         });
     </script>
 </body>
-
 </html>
-
