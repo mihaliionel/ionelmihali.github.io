@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ionel - Network Engineer | CCNA | ISP & Enterprise Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0066cc;
+            --secondary: #00a8e8;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --accent: #ff6b35;
+            --text: #333;
+            --border: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--light);
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--dark);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--secondary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: var(--secondary);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #ff8555;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 2rem;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--dark);
+            position: relative;
+        }
+
+        section h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            margin: 1rem auto 0;
+        }
+
+        /* Certifications */
+        .certifications {
+            background: white;
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .cert-card {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid var(--border);
+        }
+
+        .cert-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .cert-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .cert-card h3 {
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-status {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        .status-active {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-progress {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        /* Services */
+        .services {
+            background: var(--light);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .service-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .service-card ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .service-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .service-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Experience */
+        .experience {
+            background: white;
+        }
+
+        .experience-grid {
+            display: grid;
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .experience-item {
+            background: var(--light);
+            padding: 2rem;
+            border-left: 4px solid var(--primary);
+            border-radius: 5px;
+        }
+
+        .experience-item h3 {
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-item .role {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: var(--primary);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+        }
+
+        /* Skills */
+        .skills {
+            background: var(--dark);
+            color: white;
+        }
+
+        .skills h2 {
+            color: white;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .skill-category {
+            background: rgba(255,255,255,0.05);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .skill-category h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Projects */
+        .projects {
+            background: var(--light);
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .project-header {
+            background: var(--primary);
+            color: white;
+            padding: 1.5rem;
+        }
+
+        .project-body {
+            padding: 1.5rem;
+        }
+
+        .project-body ul {
+            margin: 1rem 0;
+        }
+
+        /* Contact */
+        .contact {
+            background: white;
+            text-align: center;
+        }
+
+        .contact-info {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-methods {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: var(--light);
+            border-radius: 5px;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.3s;
+        }
+
+        .contact-method:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+
+            .project-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Stats Section */
+        .stats {
+            background: var(--primary);
+            color: white;
+            padding: 3rem 2rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">Ionel.NET</div>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Network Engineer & ISP Specialist</h1>
+        <p class="subtitle">CCNA Certified | CCNP in Progress | Fiber Point-to-Point Expert</p>
+        <p>Transforming network infrastructure challenges into robust, scalable solutions. Specializing in ISP networks, enterprise routing & switching, automation, and telecommunications systems.</p>
+        <div class="cta-buttons">
+            <a href="#contact" class="btn btn-primary">Hire Me on Upwork</a>
+            <a href="#projects" class="btn btn-secondary">View Portfolio</a>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3>5+</h3>
+                <p>Years Experience</p>
+            </div>
+            <div class="stat-item">
+                <h3>100+</h3>
+                <p>Networks Configured</p>
+            </div>
+            <div class="stat-item">
+                <h3>CCNA</h3>
+                <p>Certified Professional</p>
+            </div>
+            <div class="stat-item">
+                <h3>24/7</h3>
+                <p>Support Available</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications -->
+    <section id="about" class="certifications">
+        <h2>Certifications & Education</h2>
+        <div class="cert-grid">
+            <div class="cert-card">
+                <div class="cert-icon">🏆</div>
+                <h3>CCNA</h3>
+                <p>Cisco Certified Network Associate</p>
+                <p>Routing & Switching, Network Fundamentals</p>
+                <span class="cert-status status-active">Certified</span>
+            </div>
+            <div class="cert-card">
+                <div class="cert-icon">🎯</div>
+                <h3>CCNP Enterprise</h3>
+                <p>In Progress - Expected 6 Months</p>
+                <p>ENCOR & ENARSI Tracks</p>
+                <span class="cert-status status-progress">In Progress</span>
+            </div>
+            <div class="cert-card">
+                <div class="cert-icon">⚡</div>
+                <h3>ISP Operations</h3>
+                <p>Fiber Point-to-Point Networks</p>
+                <p>Real-world ISP Experience</p>
+                <span class="cert-status status-active">Experienced</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="services">
+        <h2>Services I Provide</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>🌐 Network Design & Implementation</h3>
+                <p>End-to-end network architecture for enterprise and ISP environments</p>
+                <ul>
+                    <li>Enterprise network design</li>
+                    <li>ISP infrastructure planning</li>
+                    <li>Fiber point-to-point networks</li>
+                    <li>Scalability assessment</li>
+                    <li>Network documentation</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <h3>🔧 Routing & Switching</h3>
+                <p>Advanced routing protocols and switching configurations</p>
+                <ul>
+                    <li>BGP configuration & optimization</li>
+                    <li>OSPF, EIGRP implementation</li>
+                    <li>VLAN design & management</li>
+                    <li>Layer 2/3 switching</li>
+                    <li>Route redistribution</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <h3>📊 Network Monitoring</h3>
+                <p>Proactive monitoring and performance optimization</p>
+                <ul>
+                    <li>Zabbix deployment & config</li>
+                    <li>SNMP monitoring setup</li>
+                    <li>Custom alerting systems</li>
+                    <li>Performance analytics</li>
+                    <li>Network troubleshooting</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <h3>🤖 Network Automation</h3>
+                <p>Streamline operations with modern automation tools</p>
+                <ul>
+                    <li>Python network scripts</li>
+                    <li>Ansible playbooks</li>
+                    <li>Configuration management</li>
+                    <li>Automated provisioning</li>
+                    <li>Workflow optimization</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <h3>🔒 Network Security</h3>
+                <p>Secure your infrastructure against threats</p>
+                <ul>
+                    <li>Firewall configuration</li>
+                    <li>Access control lists (ACLs)</li>
+                    <li>VPN implementation</li>
+                    <li>Security audits</li>
+                    <li>Compliance assessment</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <h3>📡 Telecommunications</h3>
+                <p>Fixed network automation and DSLAM management</p>
+                <ul>
+                    <li>DSLAM configuration</li>
+                    <li>Broadband provisioning</li>
+                    <li>Fiber network optimization</li>
+                    <li>Incident management</li>
+                    <li>Telecom automation</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="experience">
+        <h2>Professional Experience</h2>
+        <div class="experience-grid">
+            <div class="experience-item">
+                <h3>Network Engineer</h3>
+                <p class="role">ISP - Fiber Point-to-Point Networks</p>
+                <p>Designed, implemented, and maintained fiber-optic point-to-point networks for ISP infrastructure. Managed routing protocols, network monitoring, and customer provisioning at scale.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">BGP</span>
+                    <span class="tech-tag">OSPF</span>
+                    <span class="tech-tag">Fiber Optics</span>
+                    <span class="tech-tag">Cisco IOS</span>
+                    <span class="tech-tag">Zabbix</span>
+                </div>
+            </div>
+            <div class="experience-item">
+                <h3>Telecommunications Automation</h3>
+                <p class="role">Fixed Broadband Networks</p>
+                <p>Developed automation solutions for DSLAM configuration, VLAN management, and broadband provisioning. Implemented monitoring systems and incident management workflows.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Ansible</span>
+                    <span class="tech-tag">DSLAM</span>
+                    <span class="tech-tag">Linux</span>
+                    <span class="tech-tag">Automation</span>
+                </div>
+            </div>
+            <div class="experience-item">
+                <h3>Freelance Network Consultant</h3>
+                <p class="role">Upwork - Growing Portfolio</p>
+                <p>Providing network engineering services to clients worldwide. Specializing in enterprise network design, BGP configurations, monitoring solutions, and automation projects.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Network Design</span>
+                    <span class="tech-tag">Consulting</span>
+                    <span class="tech-tag">GNS3</span>
+                    <span class="tech-tag">EVE-NG</span>
+                    <span class="tech-tag">Documentation</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="skills">
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Routing & Switching</h3>
+                <ul>
+                    <li>BGP (iBGP, eBGP)</li>
+                    <li>OSPF (Multi-area)</li>
+                    <li>EIGRP</li>
+                    <li>VLANs & Trunking</li>
+                    <li>STP, RSTP, MST</li>
+                    <li>Inter-VLAN Routing</li>
+                    <li>Route Redistribution</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Network Infrastructure</h3>
+                <ul>
+                    <li>Cisco IOS & IOS-XE</li>
+                    <li>Fiber Optic Networks</li>
+                    <li>Point-to-Point Links</li>
+                    <li>ISP Architecture</li>
+                    <li>DSLAM Configuration</li>
+                    <li>Broadband Technologies</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Automation & Scripting</h3>
+                <ul>
+                    <li>Python (Netmiko, Paramiko)</li>
+                    <li>Ansible Playbooks</li>
+                    <li>Bash Scripting</li>
+                    <li>Git Version Control</li>
+                    <li>Infrastructure as Code</li>
+                    <li>REST APIs</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Monitoring & Tools</h3>
+                <ul>
+                    <li>Zabbix Monitoring</li>
+                    <li>SNMP Configuration</li>
+                    <li>Wireshark Analysis</li>
+                    <li>GNS3 Simulation</li>
+                    <li>EVE-NG Labs</li>
+                    <li>Network Documentation</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Portfolio -->
+    <section id="projects" class="projects">
+        <h2>Portfolio Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Enterprise Network Design Tool</h3>
+                </div>
+                <div class="project-body">
+                    <p>React-based application for generating comprehensive enterprise network projects including:</p>
+                    <ul>
+                        <li>Automated network topology design</li>
+                        <li>IP addressing schemes (VLSM)</li>
+                        <li>Routing protocol selection</li>
+                        <li>Equipment specifications</li>
+                        <li>Project documentation</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>BGP Configuration Generator</h3>
+                </div>
+                <div class="project-body">
+                    <p>Advanced tool for creating BGP configurations with best practices:</p>
+                    <ul>
+                        <li>iBGP and eBGP setups</li>
+                        <li>Route filtering & policies</li>
+                        <li>AS path manipulation</li>
+                        <li>Community tagging</li>
+                        <li>Cisco IOS syntax output</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Zabbix Monitoring Automation</h3>
+                </div>
+                <div class="project-body">
+                    <p>Complete monitoring solution deployment:</p>
+                    <ul>
+                        <li>Ansible playbook for installation</li>
+                        <li>Template creation for network devices</li>
+                        <li>Custom alerting rules</li>
+                        <li>Dashboard configuration</li>
+                        <li>SNMP integration</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>CCNP Study Quiz Application</h3>
+                </div>
+                <div class="project-body">
+                    <p>Educational platform for CCNP preparation:</p>
+                    <ul>
+                        <li>500+ technical questions</li>
+                        <li>ENCOR & ENARSI coverage</li>
+                        <li>Progress tracking</li>
+                        <li>Detailed explanations</li>
+                        <li>Performance analytics</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Network Pricing Calculator</h3>
+                </div>
+                <div class="project-body">
+                    <p>Professional tool for network project estimation:</p>
+                    <ul>
+                        <li>Equipment cost calculation</li>
+                        <li>Labor hour estimation</li>
+                        <li>Service tier pricing</li>
+                        <li>Proposal generation</li>
+                        <li>ROI analysis</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Telecom Automation Suite</h3>
+                </div>
+                <div class="project-body">
+                    <p>Python-based automation for fixed networks:</p>
+                    <ul>
+                        <li>DSLAM port provisioning</li>
+                        <li>VLAN management scripts</li>
+                        <li>Configuration backups</li>
+                        <li>Incident response workflows</li>
+                        <li>Batch operations support</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+        <h2>Let's Work Together</h2>
+        <div class="contact-info">
+            <p style="font-size: 1.1rem; margin-bottom: 2rem;">
+                I'm currently available for freelance network engineering projects. Whether you need network design, 
+                BGP configuration, automation solutions, or ongoing network support, I'm here to help.
+            </p>
+            <div class="contact-methods">
+                <a href="https://www.linkedin.com/in/ionel-mihali-132a7562/" class="contact-method" target="_blank">
+                    <span style="font-size: 1.5rem;">💼</span>
+                    <span>Upwork Profile</span>
+                </a>
+                <a href="mailto:m.ionel91@gmail.comcom" class="contact-method">
+                    <span style="font-size: 1.5rem;">✉️</span>
+                    <span>Email Me</span>
+                </a>
+                <a href="https://www.upwork.com/freelancers/~0195de2a44548f0d49" class="contact-method" target="_blank">
+                    <span style="font-size: 1.5rem;">🔗</span>
+                    <span>LinkedIn</span>
+                </a>
+            </div>
+            <div style="margin-top: 3rem; padding: 2rem; background: var(--light); border-radius: 10px;">
+                <h3 style="color: var(--primary); margin-bottom: 1rem;">Current Rates</h3>
+                <p style="font-size: 1.2rem; color: var(--text);">
+                    Starting at <strong style="color: var(--accent);">$35/hour</strong> for network engineering projects
+                </p>
+                <p style="margin-top: 1rem; color: #666;">
+                    Specialized services and long-term contracts: Custom pricing available
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Ionel - Network Engineer. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">CCNA Certified | CCNP in Progress | ISP Specialist</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease-out';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.cert-card, .service-card, .experience-item, .project-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
