@@ -1,0 +1,61 @@
+# Dependențe pentru Agentul de Căutare Cazări
+
+# Web scraping
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+fake-useragent>=1.4.0
+
+# Baza de date
+sqlite3  # Built-in cu Python
+
+# Scheduling
+schedule>=1.2.0
+
+# Email
+# smtplib și email sunt built-in cu Python
+
+# Logging și utilitare
+logging  # Built-in cu Python
+
+# Pentru datetime și JSON
+datetime  # Built-in cu Python
+json  # Built-in cu Python
+
+# Threading
+threading  # Built-in cu Python
+
+# Argparse pentru CLI
+argparse  # Built-in cu Python
+
+# Pathlib pentru manipularea path-urilor
+pathlib  # Built-in cu Python
+
+# Re pentru regex
+re  # Built-in cu Python
+
+# Hashlib pentru hash-uri
+hashlib  # Built-in cu Python
+
+# Time pentru măsurători și pauze
+time  # Built-in cu Python
+
+# OS pentru variabile de mediu
+os  # Built-in cu Python
+
+# Typing pentru type hints
+typing  # Built-in cu Python (Python 3.5+)
+
+# Dataclasses
+dataclasses  # Built-in cu Python (Python 3.7+)
+
+# Random pentru întârzieri
+random  # Built-in cu Python
+
+# Urllib pentru URL encoding
+urllib3>=1.26.0
+
+# Optional: pentru dezvoltare și testare
+# pytest>=7.0.0
+# pytest-cov>=4.0.0
+# black>=23.0.0
+# flake8>=6.0.0

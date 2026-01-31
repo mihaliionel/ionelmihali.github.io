@@ -1,0 +1,97 @@
+# Configurații personale și date sensibile
+config.json
+*.json
+
+# Baza de date locală
+accommodation_agent.db
+*.db
+*.sqlite
+*.sqlite3
+
+# Backup-uri
+*_backup_*.db
+
+# Log files
+accommodation_agent.log
+*.log
+
+# PID files
+scheduler.pid
+*.pid
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Windows
+*.lnk
+
+# Temporary files
+*.tmp
+*.temp
+tmp/
+temp/
+
+# Sensitive environment files
+.env
+.env.local
+.env.prod
+
+# Test files
+test_*.py
+tests/
+*test*
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+.hypothesis/
+
+# Backup configuration files with sensitive data
+config_backup.json
+settings.json
